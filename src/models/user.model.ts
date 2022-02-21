@@ -4,6 +4,7 @@ import {
   prop,
   Severity,
   pre,
+  DocumentType,
 } from '@typegoose/typegoose';
 import argon2 from 'argon2'; // Alternative to bcrypt
 import { nanoid } from 'nanoid';
@@ -16,7 +17,6 @@ import log from '../utils/logger';
 
   const hash = await argon2.hash(this.password);
   this.password = hash;
-  return;
 })
 // Set default model options
 @modelOptions({
