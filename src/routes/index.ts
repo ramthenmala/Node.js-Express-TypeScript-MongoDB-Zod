@@ -1,6 +1,6 @@
 import express from 'express';
 import config from 'config';
-
+import { StatusCodes } from 'http-status-codes';
 import authroutes from './auth.routes';
 import userroutes from './user.routes';
 
@@ -9,7 +9,7 @@ const version = config.get<string>('version');
 const router = express.Router();
 
 router.get(`/${apiPrefix}/${version}/healthcheck`, (_, res) => {
-  res.sendStatus(200);
+  res.sendStatus(StatusCodes.OK);
 });
 
 router.use(authroutes);

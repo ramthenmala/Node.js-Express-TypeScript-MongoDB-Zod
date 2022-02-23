@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
+import { StatusCodes } from 'http-status-codes';
 import { AnyZodObject } from 'zod';
 
 const validateResource =
@@ -12,7 +13,7 @@ const validateResource =
       });
       next();
     } catch (e: any) {
-      return res.status(400).send(e.errors);
+      return res.status(StatusCodes.BAD_REQUEST).send(e.errors);
     }
   };
 
