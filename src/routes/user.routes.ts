@@ -2,7 +2,7 @@ import express from 'express';
 import config from 'config';
 import validateResource from '../middleware/validateResource.middleware';
 import { createUserSchema } from '../schema/user.schema';
-import { createUserHandler } from '../contorller/user.controller';
+import { createUserHandler } from '../controller/user.controller';
 
 const apiPrefix = config.get<string>('apiPrefix');
 const version = config.get<string>('version');
