@@ -14,7 +14,12 @@ export async function createUserHandler(
 
   try {
     const user = await createUser(body);
-    await sendEmail();
+    await sendEmail({
+      from: `test@example.com`,
+      to: user.email,
+      subject: `Please Verify your account`,
+      text: `Verficiation Code ${user.verificationCode}. Id: ${user._id}`,
+    });
     return res.status(StatusCodes.CREATED).send('user Successfully Created');
   } catch (e: any) {
     // If unique Constrain has violated
