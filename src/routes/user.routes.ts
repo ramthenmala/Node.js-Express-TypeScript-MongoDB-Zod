@@ -1,18 +1,19 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import config from 'config';
-import validateResource from '../middleware/validateResource.middleware';
+import { StatusCodes } from 'http-status-codes';
+import validateResource from '../middleware/validate.middleware';
 import { createUserSchema } from '../schema/user.schema';
 import { createUserHandler } from '../controller/user.controller';
 
 const apiPrefix = config.get<string>('apiPrefix');
 const version = config.get<string>('version');
 
-const router = express.Router();
+const userRoutes = express.Router();
 
-router.get(
-  `/${apiPrefix}/${version}/user`,
+userRoutes.post(
+  `/${apiPrefix}/${version}/users`,
   validateResource(createUserSchema),
   createUserHandler
 );
 
-export default router;
+export default userRoutes;

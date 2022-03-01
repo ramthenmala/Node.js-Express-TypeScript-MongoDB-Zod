@@ -1,14 +1,5 @@
 import express from 'express';
-import { StatusCodes } from 'http-status-codes';
-import config from 'config';
 
-const apiPrefix = config.get<string>('apiPrefix');
-const version = config.get<string>('version');
+const authRoutes = express.Router();
 
-const router = express.Router();
-
-router.get(`/${apiPrefix}/${version}/auth`, (_, res) => {
-  res.sendStatus(StatusCodes.OK);
-});
-
-export default router;
+export default authRoutes;

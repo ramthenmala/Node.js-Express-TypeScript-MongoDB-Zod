@@ -13,7 +13,8 @@ const validateResource =
       });
       next();
     } catch (e: any) {
-      return res.status(StatusCodes.BAD_REQUEST).send(e.errors);
+      console.log(e);
+      res.status(StatusCodes.BAD_REQUEST).send(e.errors);
     }
   };
 

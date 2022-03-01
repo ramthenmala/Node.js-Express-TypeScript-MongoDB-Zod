@@ -2,13 +2,17 @@ import mongoose from 'mongoose';
 import config from 'config';
 import log from './logger';
 
-async function connectDB(uri: string) {
+const connectDB = async () => {
+  const dbUri = config.get<string>('dbUri');
+
   try {
-    await mongoose.connect(uri);
-    log.info(`Connected to DB`);
+    await mongoose.connect(dbUri);
+    log.info(`connected mongoose`);
   } catch (error) {
+    log.info(`Error from connectDB Ts`);
+    log.info(error);
     process.exit(1);
   }
-}
+};
 
 export default connectDB;
